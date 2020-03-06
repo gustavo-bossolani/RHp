@@ -1,7 +1,9 @@
 import { Router } from 'express';
 
+import DepartamentoController from './app/controllers/DepartamentoController';
+
 const routes = new Router();
 
-routes.get('/', (req, resp) => resp.json({ message: 'hello world' }));
+routes.get('/departamentos', DepartamentoController.index);
 
 export default routes;
