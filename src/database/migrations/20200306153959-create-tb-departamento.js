@@ -1,23 +1,20 @@
 module.exports = {
     up: (queryInterface, Sequelize) => {
-        return queryInterface.createTable('Departamento', {
-            CD_DEPTO: {
+        return queryInterface.createTable('tb_departamento', {
+            cd_depto: {
                 type: Sequelize.BIGINT,
-                allowNull: false,
                 autoIncrement: true,
                 primaryKey: true,
-                unique: true,
             },
-            NM_DEPTO: {
+            nm_depto: {
                 type: Sequelize.STRING,
                 allowNull: false,
-                primaryKey: true,
             },
-            CREATED_AT: {
+            created_at: {
                 type: Sequelize.DATE,
                 allowNull: false,
             },
-            UPDATED_AT: {
+            updated_at: {
                 type: Sequelize.DATE,
                 allowNull: false,
             },
@@ -25,6 +22,6 @@ module.exports = {
     },
 
     down: queryInterface => {
-        return queryInterface.dropTable('Departamento');
+        return queryInterface.dropTable('tb_departamento');
     },
 };

@@ -4,13 +4,16 @@ class Funcionario extends Model {
     static init(sequelize) {
         super.init(
             {
-                CPF_FUNC: Sequelize.INTEGER,
-                NM_FUNC: Sequelize.STRING,
-                SL_FUNC: Sequelize.DOUBLE,
-                DT_NASC_FUNC: Sequelize.DATE,
-                CD_DEPTO: Sequelize.INTEGER,
+                cpf_func: Sequelize.INTEGER,
+                nm_func: Sequelize.STRING,
+                sl_func: Sequelize.DOUBLE,
+                dt_nasc_func: Sequelize.DATE,
+                fk_depto: Sequelize.INTEGER,
             },
             {
+                tableName: 'tb_funcionario',
+                modelName: 'Funcionario',
+                freezeTableName: true,
                 sequelize,
             }
         );
@@ -18,7 +21,7 @@ class Funcionario extends Model {
 
     static associate(models) {
         this.belongsTo(models.Departamento, {
-            foreignKey: 'CD_DEPTO',
+            foreignKey: 'cd_depto',
             as: 'departamento',
         });
     }

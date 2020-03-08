@@ -1,15 +1,15 @@
 module.exports = {
     up: (queryInterface, Sequelize) => {
-        return queryInterface.addColumn('Funcionario', 'CD_DEPTO', {
+        return queryInterface.addColumn('tb_funcionario', 'fk_depto', {
             type: Sequelize.INTEGER,
             allowNull: false,
-            references: { model: 'Departamento', key: 'CD_DEPTO' },
+            references: { model: 'tb_departamento', key: 'cd_depto' },
             onUpdate: 'CASCADE',
             onDelete: 'CASCADE',
         });
     },
 
     down: queryInterface => {
-        return queryInterface.removeColumn('Funcionario', 'CD_DEPTO');
+        return queryInterface.removeColumn('tb_funcionario', 'fk_depto');
     },
 };

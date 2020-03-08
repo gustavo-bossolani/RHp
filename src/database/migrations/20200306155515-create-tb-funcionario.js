@@ -1,35 +1,34 @@
 module.exports = {
     up: (queryInterface, Sequelize) => {
-        return queryInterface.createTable('Funcionario', {
-            CPF_FUNC: {
+        return queryInterface.createTable('tb_funcionario', {
+            cpf_func: {
                 type: Sequelize.INTEGER,
-                allowNull: false,
                 autoIncrement: false,
                 primaryKey: true,
                 unique: true,
             },
-            NM_FUNC: {
+            nm_func: {
                 type: Sequelize.STRING,
                 allowNull: false,
             },
-            SL_FUNC: {
+            sl_func: {
                 type: Sequelize.DOUBLE,
                 allowNull: false,
             },
-            DT_NASC_FUNC: {
+            dt_nasc_func: {
                 type: Sequelize.DATE,
                 allowNull: false,
             },
-            DT_ADM_FUNC: {
+            dt_adm_func: {
                 type: Sequelize.DATE,
                 allowNull: false,
                 defaultValue: new Date(),
             },
-            CREATED_AT: {
+            created_at: {
                 type: Sequelize.DATE,
                 allowNull: false,
             },
-            UPDATED_AT: {
+            updated_at: {
                 type: Sequelize.DATE,
                 allowNull: false,
             },
@@ -37,6 +36,6 @@ module.exports = {
     },
 
     down: queryInterface => {
-        return queryInterface.dropTable('Funcionario');
+        return queryInterface.dropTable('tb_funcionario');
     },
 };

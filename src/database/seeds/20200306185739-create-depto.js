@@ -1,22 +1,22 @@
 module.exports = {
     up: QueryInterface => {
         return QueryInterface.bulkInsert(
-            'Departamento',
+            'tb_departamento',
             [
                 {
-                    NM_DEPTO: 'RECURSOS HUMANOS',
-                    CREATED_AT: new Date(),
-                    UPDATED_AT: new Date(),
+                    nm_depto: 'RECURSOS HUMANOS',
+                    created_at: new Date(),
+                    updated_at: new Date(),
                 },
                 {
-                    NM_DEPTO: 'TECNOLOGIA DA INFORMAÇÃO',
-                    CREATED_AT: new Date(),
-                    UPDATED_AT: new Date(),
+                    nm_depto: 'TECNOLOGIA DA INFORMAÇÃO',
+                    created_at: new Date(),
+                    updated_at: new Date(),
                 },
                 {
-                    NM_DEPTO: 'CONTABILIDADE',
-                    CREATED_AT: new Date(),
-                    UPDATED_AT: new Date(),
+                    nm_depto: 'CONTABILIDADE',
+                    created_at: new Date(),
+                    updated_at: new Date(),
                 },
             ],
             {}
