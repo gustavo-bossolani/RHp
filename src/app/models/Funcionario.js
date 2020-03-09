@@ -4,7 +4,7 @@ class Funcionario extends Model {
     static init(sequelize) {
         super.init(
             {
-                cpf_func: Sequelize.INTEGER,
+                cpf_func: Sequelize.STRING,
                 nm_func: Sequelize.STRING,
                 sl_func: Sequelize.DOUBLE,
                 dt_nasc_func: Sequelize.DATE,

@@ -1,6 +1,6 @@
 module.exports = {
     up: (queryInterface, Sequelize) => {
-        return queryInterface.addColumn('tb_funcionario', 'fk_depto', {
+        return queryInterface.addColumn('tb_funcionario', 'cd_depto', {
             type: Sequelize.INTEGER,
             allowNull: false,
             references: { model: 'tb_departamento', key: 'cd_depto' },
@@ -10,6 +10,6 @@ module.exports = {
     },
 
     down: queryInterface => {
-        return queryInterface.removeColumn('tb_funcionario', 'fk_depto');
+        return queryInterface.removeColumn('tb_funcionario', 'cd_depto');
     },
 };

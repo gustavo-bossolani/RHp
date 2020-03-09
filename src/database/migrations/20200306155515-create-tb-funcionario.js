@@ -2,7 +2,7 @@ module.exports = {
     up: (queryInterface, Sequelize) => {
         return queryInterface.createTable('tb_funcionario', {
             cpf_func: {
-                type: Sequelize.INTEGER,
+                type: Sequelize.STRING,
                 autoIncrement: false,
                 primaryKey: true,
                 unique: true,
@@ -16,7 +16,7 @@ module.exports = {
                 allowNull: false,
             },
             dt_nasc_func: {
-                type: Sequelize.DATE,
+                type: Sequelize.DATEONLY,
                 allowNull: false,
             },
             dt_adm_func: {

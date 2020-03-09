@@ -10,7 +10,6 @@ class Departamento extends Model {
                 tableName: 'tb_departamento',
                 modelName: 'Departamento',
                 freezeTableName: true,
-                comment: 'Tabela reference ao Departamento',
                 sequelize,
             }
         );
