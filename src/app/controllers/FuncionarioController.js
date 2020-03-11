@@ -15,21 +15,26 @@ class FuncionarioController {
                     ['sl_func', 'salario'],
                     ['dt_nasc_func', 'data_nascimento'],
                     ['dt_adm_func', 'data_admissao'],
-                    ['cd_depto', 'codigo'],
                 ],
                 include: [
                     {
                         model: Departamento,
                         as: 'departamento',
-                        attributes: ['nm_depto'],
+                        attributes: [['nm_depto', 'nome']],
                     },
                 ],
             });
-            return resp.json(funcionarios);
+            return resp.json({ funcionarios });
         }
-        const func = await Funcionario.findOne({
+        const funcionario = await Funcionario.findOne({
             where: { cpf_func: cpf },
-            attributes: ['cpf_func', 'nm_func'],
+            attributes: [
+                ['cpf_func', 'cpf'],
+                ['nm_func', 'nome'],
+                ['sl_func', 'salario'],
+                ['dt_nasc_func', 'data_nascimento'],
+                ['dt_adm_func', 'data_admissao'],
+            ],
             include: [
                 {
                     model: Departamento,
@@ -38,7 +43,10 @@ class FuncionarioController {
                 },
             ],
         });
-        return resp.json(func);
+
+        return resp.json({
+            funcionario,
+        });
     }
 
     async store(req, resp) {
@@ -101,13 +109,14 @@ class FuncionarioController {
         });
         return resp.json({
             funcionario: {
-                CPF: cpf,
+                cpf,
                 nome,
                 salario,
                 data_nascimento,
-            },
-            departamento: {
-                nome: checkDepto.nm_depto,
+                data_admissao: new Date(),
+                departamento: {
+                    nome: checkDepto.nm_depto,
+                },
             },
         });
     }

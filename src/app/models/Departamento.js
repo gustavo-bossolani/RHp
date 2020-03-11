@@ -4,6 +4,7 @@ class Departamento extends Model {
     static init(sequelize) {
         super.init(
             {
+                cd_depto: Sequelize.BIGINT,
                 nm_depto: Sequelize.STRING,
             },
             {

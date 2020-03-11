@@ -8,7 +8,7 @@ class Funcionario extends Model {
                 nm_func: Sequelize.STRING,
                 sl_func: Sequelize.DOUBLE,
                 dt_nasc_func: Sequelize.DATE,
-                fk_depto: Sequelize.INTEGER,
+                cd_depto: Sequelize.BIGINT,
             },
             {
                 tableName: 'tb_funcionario',
@@ -22,6 +22,7 @@ class Funcionario extends Model {
     static associate(models) {
         this.belongsTo(models.Departamento, {
             foreignKey: 'cd_depto',
+            targetKey: 'cd_depto',
             as: 'departamento',
         });
     }
