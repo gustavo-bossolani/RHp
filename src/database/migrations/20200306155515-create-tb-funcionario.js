@@ -20,7 +20,7 @@ module.exports = {
                 allowNull: false,
             },
             dt_adm_func: {
-                type: Sequelize.DATE,
+                type: Sequelize.DATEONLY,
                 allowNull: false,
                 defaultValue: new Date(),
             },

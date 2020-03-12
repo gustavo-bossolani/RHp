@@ -7,7 +7,8 @@ class Funcionario extends Model {
                 cpf_func: Sequelize.STRING,
                 nm_func: Sequelize.STRING,
                 sl_func: Sequelize.DOUBLE,
-                dt_nasc_func: Sequelize.DATE,
+                dt_nasc_func: Sequelize.DATEONLY,
+                dt_adm_func: Sequelize.DATEONLY,
                 cd_depto: Sequelize.BIGINT,
             },
             {

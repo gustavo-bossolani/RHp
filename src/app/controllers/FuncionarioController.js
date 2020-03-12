@@ -5,10 +5,24 @@ import Departamento from '../models/Departamento';
 
 class FuncionarioController {
     async index(req, resp) {
-        const { cpf } = req.query;
+        const schema = Yup.object().shape({
+            cpf: Yup.string('Formato de CPF inválido').length(
+                11,
+                'CPF deve ter 11 digitos.'
+            ),
+            page: Yup.number('Formato de paginação incorreta')
+                .moreThan(0, 'Paginação deve ser maior que 0.')
+                .required('Paginação é obrigatório'),
+        });
+
+        if (!(await schema.isValid(req.query)))
+            return resp.status(404).json({ erro: 'Erro de validação.' });
+
+        const { cpf, page } = req.query;
         if (!cpf) {
             const funcionarios = await Funcionario.findAll({
                 order: ['cd_depto'],
+                offset: (page - 1) * 10,
                 attributes: [
                     ['cpf_func', 'cpf'],
                     ['nm_func', 'nome'],
@@ -44,9 +58,12 @@ class FuncionarioController {
             ],
         });
 
-        return resp.json({
-            funcionario,
-        });
+        if (!funcionario)
+            return resp
+                .status(404)
+                .json({ erro: 'Funcionário não encontrado.' });
+
+        return resp.json({ funcionario });
     }
 
     async store(req, resp) {
@@ -59,7 +76,8 @@ class FuncionarioController {
             ),
             salario: Yup.number('Formato de salário inválido.')
                 .required('O campo de salário é obrigatório.')
-                .positive('Formato de salário inválido.'),
+                .positive('Formato de salário inválido.')
+                .moreThan(0, 'Salário deve ser maior que 0.'),
             data_nascimento: Yup.date(
                 'Formato de data de nascimento inválido.'
             ).required('O campo de data de nascimento é obrigatório.'),
@@ -107,13 +125,13 @@ class FuncionarioController {
             dt_nasc_func: data_nascimento,
             cd_depto: codigo,
         });
+
         return resp.json({
             funcionario: {
                 cpf,
                 nome,
                 salario,
                 data_nascimento,
-                data_admissao: new Date(),
                 departamento: {
                     nome: checkDepto.nm_depto,
                 },
