@@ -13,7 +13,9 @@ class DepartamentoController {
                     ['nm_depto', 'nome'],
                 ],
             });
-            return resp.json(deptos);
+            return resp.json({
+                departamentos: deptos,
+            });
         }
         const depto = await Departamento.findOne({
             where: { cd_depto: codigo },
@@ -57,8 +59,10 @@ class DepartamentoController {
         const { nm_depto, cd_depto } = createdDepto.dataValues;
 
         return resp.json({
-            codigo: cd_depto,
-            nome: nm_depto,
+            departamento: {
+                codigo: cd_depto,
+                nome: nm_depto,
+            },
         });
     }
 }
