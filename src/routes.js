@@ -7,8 +7,21 @@ import SessionController from './app/controllers/SessionController';
 
 import authMiddleware from './app/middlewares/auth';
 
+import swaggerConfig from './config/swagger';
+
 const routes = new Router();
 
+routes.use('/rhp-doc', swaggerConfig.serve, swaggerConfig.setup);
+
+// Routes
+/**
+ * @Swagger
+ * /session:
+ *  post:
+ *    description: Cria uma nova sessão de usuário.
+ *    responses:
+ *
+ */
 routes.post('/session', SessionController.store);
 
 routes.use(authMiddleware);
