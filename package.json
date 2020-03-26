@@ -9,7 +9,8 @@
     "dev:debug": "nodemon --inspect src/server.js",
     "db:create": "sequelize db:migrate",
     "db:drop": "sequelize db:migrate:undo:all",
-    "db:seed": "sequelize db:seed:all"
+    "db:seed": "sequelize db:seed:all",
+    "start": "yarn dev:create && node src/server.js"
   },
   "dependencies": {
     "date-fns": "^2.10.0",
