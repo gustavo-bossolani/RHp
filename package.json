@@ -10,7 +10,7 @@
     "db:create": "sequelize db:migrate",
     "db:drop": "sequelize db:migrate:undo:all",
     "db:seed": "sequelize db:seed:all",
-    "start": "node src/server.js"
+    "start": "yarn db:create && yarn db:seed && node src/server.js"
   },
   "dependencies": {
     "date-fns": "^2.10.0",
